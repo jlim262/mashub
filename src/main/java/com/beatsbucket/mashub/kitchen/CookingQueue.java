@@ -16,5 +16,5 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-public interface CookingQueue extends Queue {
+public interface CookingQueue extends Queue<Command> {
 }
