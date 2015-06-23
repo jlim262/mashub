@@ -16,7 +16,7 @@
 
 package com.beatsbucket.mashub.channel;
 
-public interface Channel {
-	public Credential getCredential();
-	public boolean test();
+public interface Credential {
+	public AuthenticationType getAuthenticationType();
+	public String getId();
 }
