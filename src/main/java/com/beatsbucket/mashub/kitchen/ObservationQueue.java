@@ -16,5 +16,5 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-public interface ObservationQueue extends Queue {
+public interface ObservationQueue extends Queue<Command> {
 }
