@@ -14,29 +14,28 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.channel;
+package com.beatsbucket.mashub.channel.test;
 
-public class BasicAuthCredential implements Credential {
+import java.net.URL;
+
+import org.junit.Test;
+
+import com.beatsbucket.mashub.channel.BasicAuthChannel;
+import com.beatsbucket.mashub.channel.BasicAuthCredential;
+
+public class BasicAuthChannelTest {
 	
-	private String id;
-	private String password;
-	
-	public BasicAuthCredential(String id, String password) {
-		this.id = id;
-		this.password = password;
+	@Test
+	public void testTest() throws Exception {
+		String id = System.getProperty("id");
+		String password = System.getProperty("password");
+		
+		BasicAuthCredential credential = new BasicAuthCredential(id, password); 
+		BasicAuthChannel channel = new BasicAuthChannel(credential);
+		URL url = new URL("https://api.github.com/user");  
+		channel.setTestUrl(url);
+		
+		channel.test();
 	}
 
-	public AuthenticationType getAuthenticationType() {
-		// TODO Auto-generated method stub
-		return AuthenticationType.BASICAUTH;
-	}
-
-	public String getId() {
-		// TODO Auto-generated method stub
-		return id;
-	}
-
-	public String getPassword() {
-		return password;
-	}
 }

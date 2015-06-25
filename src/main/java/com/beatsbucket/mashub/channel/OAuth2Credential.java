@@ -21,13 +21,11 @@ public class OAuth2Credential implements Credential {
 	private String id;
 	private String accessToken;
 
-	@Override
 	public AuthenticationType getAuthenticationType() {
 		// TODO Auto-generated method stub
 		return AuthenticationType.OAUTH2;
 	}
 
-	@Override
 	public String getId() {
 		// TODO Auto-generated method stub
 		return id;
