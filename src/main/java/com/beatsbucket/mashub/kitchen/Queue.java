@@ -16,7 +16,16 @@
 
 package com.beatsbucket.mashub.kitchen;
 
+import java.util.concurrent.TimeUnit;
+
 public interface Queue<C extends Command> {
     void put(C command);
     C get();
+    void hide(C command, int duration, TimeUnit timeUnit);
+    void delete();
+    void addLast(C command);
+    void addFirst(C command);
+    void addBefore(C command, C target);
+    void addAfter(C command, C target);
+    void clear();
 }
