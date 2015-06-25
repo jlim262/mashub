@@ -16,5 +16,21 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-public interface RecipeBook {
+import com.beatsbucket.mashub.auth.User;
+import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+import com.beatsbucket.mashub.kitchen.ingredient.IngredType;
+
+import java.util.List;
+
+public interface RecipeBook<R extends Recipe> {
+    List<R> search(User user);
+    List<R> search(User user, Ingred ingred);
+    List<R> search(User user, Ingred ingred, IngredType ingredType);
+    List<R> search(User user, Ingred ifType, Ingred thenType);
+    void add(R);
+    void add(List<R>);
+    void delete(R);
+    void delete(List<R>);
+    void update(R);
+    void update(List<R>);
 }
