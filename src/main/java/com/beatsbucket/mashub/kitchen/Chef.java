@@ -16,8 +16,16 @@
 
 package com.beatsbucket.mashub.kitchen;
 
+import java.util.concurrent.Future;
+
 /**
  * Chef is a worker who observes an {@link Ingred} and cooks another {@link Ingred} by Recipe.
  */
-public interface Chef {
+public interface Chef<Q extends Queue, C extends Command> {
+    Q setQueue(Q queue);
+    C getCommand();
+    C getAndDeleteCommand();
+    Q insertCommand(C command);
+    Future perform(C command);
+    void addListener(Listener listener);
 }

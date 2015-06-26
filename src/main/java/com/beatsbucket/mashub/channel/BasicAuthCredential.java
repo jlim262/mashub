@@ -16,7 +16,27 @@
 
 package com.beatsbucket.mashub.channel;
 
-public interface Channel {
-	public Credential getCredential();
-	public boolean test();
+public class BasicAuthCredential implements Credential {
+	
+	private String id;
+	private String password;
+	
+	public BasicAuthCredential(String id, String password) {
+		this.id = id;
+		this.password = password;
+	}
+
+	public AuthenticationType getAuthenticationType() {
+		// TODO Auto-generated method stub
+		return AuthenticationType.BASICAUTH;
+	}
+
+	public String getId() {
+		// TODO Auto-generated method stub
+		return id;
+	}
+
+	public String getPassword() {
+		return password;
+	}
 }

@@ -14,9 +14,7 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.channel;
+package com.beatsbucket.mashub.kitchen;
 
-public interface Channel {
-	public Credential getCredential();
-	public boolean test();
+public interface Listener {
 }

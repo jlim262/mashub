@@ -14,9 +14,28 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.channel;
+package com.beatsbucket.mashub.channel.test;
 
-public interface Channel {
-	public Credential getCredential();
-	public boolean test();
+import java.net.URL;
+
+import org.junit.Test;
+
+import com.beatsbucket.mashub.channel.BasicAuthChannel;
+import com.beatsbucket.mashub.channel.BasicAuthCredential;
+
+public class BasicAuthChannelTest {
+	
+	@Test
+	public void testTest() throws Exception {
+		String id = System.getProperty("id");
+		String password = System.getProperty("password");
+		
+		BasicAuthCredential credential = new BasicAuthCredential(id, password); 
+		BasicAuthChannel channel = new BasicAuthChannel(credential);
+		URL url = new URL("https://api.github.com/user");  
+		channel.setTestUrl(url);
+		
+		channel.test();
+	}
+
 }
