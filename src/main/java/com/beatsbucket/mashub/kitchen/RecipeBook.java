@@ -27,10 +27,10 @@ public interface RecipeBook<R extends Recipe> {
     List<R> search(User user, Ingred ingred);
     List<R> search(User user, Ingred ingred, IngredType ingredType);
     List<R> search(User user, Ingred ifType, Ingred thenType);
-    void add(R);
-    void add(List<R>);
-    void delete(R);
-    void delete(List<R>);
-    void update(R);
-    void update(List<R>);
+    void add(R recipe);
+    void add(List<R> recipes);
+    void delete(R recipe);
+    void delete(List<R> recipes);
+    void update(R recipe);
+    void update(List<R> recipes);
 }
