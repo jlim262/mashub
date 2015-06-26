@@ -20,4 +20,5 @@ import com.beatsbucket.mashub.channel.Channel;
 
 public interface Ingred {
     <C extends Channel> void loadChannel(C channel);
+
 }

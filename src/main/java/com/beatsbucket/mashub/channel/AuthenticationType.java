@@ -16,5 +16,5 @@
 package com.beatsbucket.mashub.channel;
 
 public enum AuthenticationType {
-	BASICAUTH, OAUTH2
+	BASICAUTH, OAUTH1, OAUTH2
 }

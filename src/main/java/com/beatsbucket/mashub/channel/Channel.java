@@ -16,7 +16,7 @@
 
 package com.beatsbucket.mashub.channel;
 
-public interface Channel {
-	public Credential getCredential();
-	public boolean test();
+public abstract class Channel<C extends Credential> {
+	public abstract C getCredential();
+	public abstract boolean test();
 }

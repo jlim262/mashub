@@ -23,7 +23,7 @@ import javax.ws.rs.client.ClientBuilder;
 
 import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 
-public class BasicAuthChannel implements Channel {
+public class BasicAuthChannel extends Channel {
 
 	private BasicAuthCredential credential;
 	private URL testUrl;

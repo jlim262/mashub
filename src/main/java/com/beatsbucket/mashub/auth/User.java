@@ -16,5 +16,12 @@
 
 package com.beatsbucket.mashub.auth;
 
+import java.util.List;
+
+import com.beatsbucket.mashub.channel.Credential;
+
 public class User {
+	private String id;
+	private String password;
+	private List<Credential> credentials;
 }
