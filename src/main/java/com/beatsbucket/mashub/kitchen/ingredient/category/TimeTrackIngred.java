@@ -16,5 +16,7 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient.category;
 
-public class TimeTrackIngred {
+import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+
+public interface TimeTrackIngred extends Ingred {
 }

@@ -16,5 +16,7 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient.category;
 
-public interface SocialIngred {
+import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+
+public interface SocialIngred extends Ingred {
 }

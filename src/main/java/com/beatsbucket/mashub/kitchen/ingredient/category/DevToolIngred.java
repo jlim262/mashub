@@ -16,5 +16,7 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient.category;
 
-public interface DevToolIngred {
+import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+
+public interface DevToolIngred extends Ingred {
 }

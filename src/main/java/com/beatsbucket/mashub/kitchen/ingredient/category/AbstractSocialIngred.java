@@ -18,5 +18,5 @@ package com.beatsbucket.mashub.kitchen.ingredient.category;
 
 import com.beatsbucket.mashub.kitchen.ingredient.AbstractIngred;
 
-public abstract class AbstractSocialIngred extends AbstractIngred {
+public abstract class AbstractSocialIngred extends AbstractIngred implements SocialIngred {
 }

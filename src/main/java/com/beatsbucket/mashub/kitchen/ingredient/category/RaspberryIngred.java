@@ -16,5 +16,7 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient.category;
 
-public class RaspberryIngred {
+import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+
+public interface RaspberryIngred extends Ingred {
 }

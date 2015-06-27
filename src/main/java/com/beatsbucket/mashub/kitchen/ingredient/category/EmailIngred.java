@@ -16,5 +16,7 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient.category;
 
-public interface EmailIngred {
+import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+
+public interface EmailIngred extends Ingred {
 }

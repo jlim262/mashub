@@ -16,5 +16,7 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient.category;
 
-public class SurveyIngred {
+import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+
+public interface SurveyIngred extends Ingred {
 }
