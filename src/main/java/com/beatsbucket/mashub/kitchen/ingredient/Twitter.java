@@ -49,10 +49,12 @@ public class Twitter implements Ingred {
 		
 	}
 
+	@Override
 	public void advertise(Fridge fridge) {
-		
+
 	}
 
+	@Override
 	public Future cook(String json) {
 		return null;
 	}
