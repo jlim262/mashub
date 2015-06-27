@@ -9,6 +9,7 @@ import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.Feature;
 
 import com.beatsbucket.mashub.kitchen.Fridge;
+import com.beatsbucket.mashub.kitchen.ingredient.category.AbstractSocialIngred;
 import org.glassfish.jersey.client.oauth1.AccessToken;
 import org.glassfish.jersey.client.oauth1.ConsumerCredentials;
 import org.glassfish.jersey.client.oauth1.OAuth1ClientSupport;
@@ -16,7 +17,7 @@ import org.glassfish.jersey.client.oauth1.OAuth1ClientSupport;
 import com.beatsbucket.mashub.channel.Channel;
 import com.beatsbucket.mashub.channel.OAuth1Channel;
 
-public class Twitter implements Ingred {
+public class Twitter extends AbstractSocialIngred {
 	private OAuth1Channel channel;
 	
 	public boolean tweet(String msg) throws UnsupportedEncodingException {
