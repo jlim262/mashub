@@ -17,8 +17,12 @@
 package com.beatsbucket.mashub.kitchen.ingredient;
 
 import com.beatsbucket.mashub.channel.Channel;
+import com.beatsbucket.mashub.kitchen.Fridge;
+
+import java.util.concurrent.Future;
 
 public interface Ingred {
     <C extends Channel> void loadChannel(C channel);
-
+    void advertise(Fridge fridge);
+    Future cook(String json);
 }

@@ -2,11 +2,13 @@ package com.beatsbucket.mashub.kitchen.ingredient;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.concurrent.Future;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.Feature;
 
+import com.beatsbucket.mashub.kitchen.Fridge;
 import org.glassfish.jersey.client.oauth1.AccessToken;
 import org.glassfish.jersey.client.oauth1.ConsumerCredentials;
 import org.glassfish.jersey.client.oauth1.OAuth1ClientSupport;
@@ -45,6 +47,14 @@ public class Twitter implements Ingred {
 		// TODO Auto-generated method stub
 		this.channel = (OAuth1Channel) channel;
 		
+	}
+
+	public void advertise(Fridge fridge) {
+		
+	}
+
+	public Future cook(String json) {
+		return null;
 	}
 
 }
