@@ -16,5 +16,5 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient.category;
 
-public class AbstractRaspberryIngred {
+public abstract class AbstractRaspberryIngred {
 }
