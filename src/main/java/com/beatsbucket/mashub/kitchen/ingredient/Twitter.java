@@ -43,6 +43,30 @@ public class Twitter extends AbstractSocialIngred {
 		return true;
 	}
 	
+	public String getTimeline(int count) throws UnsupportedEncodingException {
+		// TODO Auto-generated method stub
+		Client client = ClientBuilder.newClient();
+		
+		ConsumerCredentials consumerCredentials = new ConsumerCredentials(
+                channel.getConsumerKey(), channel.getConsumerSecret());
+		AccessToken storedToken = new AccessToken(
+				channel.getCredential().getAccessToken(), 
+				channel.getCredential().getAccessTokenSecret());
+		
+		Feature filterFeature = OAuth1ClientSupport.builder(consumerCredentials)
+			    .feature()
+			    .accessToken(storedToken)
+			    .build();
+		
+		client.register(filterFeature);
+		
+		String responseMsg = client.target("https://api.twitter.com/1.1/statuses/user_timeline.json?count=" + count).request()
+				.property(OAuth1ClientSupport.OAUTH_PROPERTY_ACCESS_TOKEN, storedToken).get(String.class);
+		
+
+		return responseMsg;
+	}
+	
 	@Override
 	public <C extends Channel> void loadChannel(C channel) {
 		// TODO Auto-generated method stub
