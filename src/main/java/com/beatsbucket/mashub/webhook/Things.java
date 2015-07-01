@@ -43,24 +43,32 @@ public class Things {
     /**
      * This interface is used to register things.
      * 
-     * @param name - System name of the Thing (need not be unique).
-     * @param default_display_name - Name of the Thing to be displayed to users. If a default display name is not provided, the system name is displayed.
-     * @param proxy - Identification of the Thing client or proxy (many things can share the same proxy).
-     * @param uuid - Manufacturer-provided serial number of the Thing.
-     * @param manufacturer - Name of the Thing manufacturer.
-     * @param model - Thing model.
-     * @param protocol_version - Version of the protocol supported by the Thing, e.g. "1.0".
-     * @param setup_url - URL with Thing setup instructions.
-     * @param support_url - URL that user should be directed to if they are in need of Thing support.
-     * @param update_url - URL that user should be directed to if Thing needs a firmware update.
-     * @param firmware - Version of the Thing's firmware.
-     * @param local_settings - Current local settings of the Thing (see Local settings).
-     * @param semantic_state - Current state of the Thing.
-     * @param capabilities - Thing capabilities.
-     * @param capsHash - A hash or digest value of the capabilities data. This value is useful, for example, to compare values and check whether the local Thing's capabilities have changed.
-     * @param tag - Tags (free-form string values) to add to the Thing. You can attach a set of unique tags to a Thing, which may be useful to store additional metadata about the Thing for later use by your application.
-     * @param data - Private data to add to the Thing. Private data values are similar to tags except that they are write-only; they can be added in /register and added or removed in /update, but they are never rendered in responses from the server.
+     * @param name: System name of the Thing (need not be unique).
+     * @param default_display_name: Name of the Thing to be displayed to users. If a default display name is not provided, the system name is displayed.
+     * @param proxy: Identification of the Thing client or proxy (many things can share the same proxy).
+     * @param uuid: Manufacturer-provided serial number of the Thing.
+     * @param manufacturer: Name of the Thing manufacturer.
+     * @param model: Thing model.
+     * @param protocol_version: Version of the protocol supported by the Thing, e.g. "1.0".
+     * @param setup_url: URL with Thing setup instructions.
+     * @param support_url: URL that user should be directed to if they are in need of Thing support.
+     * @param update_url: URL that user should be directed to if Thing needs a firmware update.
+     * @param firmware: Version of the Thing's firmware.
+     * @param local_settings: Current local settings of the Thing (see Local settings).
+     * @param semantic_state: Current state of the Thing.
+     * @param capabilities: Thing capabilities.
+     * @param capsHash: A hash or digest value of the capabilities data. This value is useful, for example, to compare values and check whether the local Thing's capabilities have changed.
+     * @param tag: Tags (free-form string values) to add to the Thing. You can attach a set of unique tags to a Thing, which may be useful to store additional metadata about the Thing for later use by your application.
+     * @param data: Private data to add to the Thing. Private data values are similar to tags except that they are write-only; they can be added in /register and added or removed in /update, but they are never rendered in responses from the server.
      * @return
+     * The JSON response object contains a Boolean success indicator, the XSRF token used, 
+     * a listing of the request parameters, and a list of printers consisting of a single entry 
+     * which contains the fields of the printer added in the request.
+     * 		registration_token: a human readable string the user will need to claim Thing ownership
+	 * 		token_duration: the lifetime of the registration_token, in seconds (the whole registration has to finish within this time frame)
+	 * 		invite_url: the url that a user will need to visit to claim ownership of the Thing
+	 * 		complete_invite_url: same thing of invite_url but already containing the registration_token, so that the user doesn't have to insert it manually
+	 * 		polling_url: the url that the Thing will need to poll for the OAuth2 authorization_code
      */
     @POST
     @Path("register")
