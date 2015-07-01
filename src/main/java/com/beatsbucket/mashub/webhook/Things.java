@@ -63,7 +63,7 @@ public class Things {
      * @return
      */
     @POST
-    @Path("{register}")
+    @Path("register")
     @Produces(MediaType.TEXT_PLAIN)
     public String register(@QueryParam("name") String name,
     		@QueryParam("default_display_name") String defaultDisplayName,
@@ -71,13 +71,13 @@ public class Things {
     		@QueryParam("uuid") String uuid,
     		@QueryParam("manufacturer") String manufacturer,
     		@QueryParam("model") String model,
-    		@QueryParam("protocol_version") String protocol_version,
-    		@QueryParam("setup_url") String setup_url,
-    		@QueryParam("support_url") String support_url,
-    		@QueryParam("update_url") String update_url,
+    		@QueryParam("protocol_version") String protocolVersion,
+    		@QueryParam("setup_url") String setupUrl,
+    		@QueryParam("support_url") String supportUrl,
+    		@QueryParam("update_url") String updateUrl,
     		@QueryParam("firmware") String firmware,
-    		@QueryParam("local_settings") String local_settings,
-    		@QueryParam("semantic_state") String semantic_state,
+    		@QueryParam("local_settings") String localSettings,
+    		@QueryParam("semantic_state") String semanticState,
     		@QueryParam("capabilities") String capabilities,
     		@QueryParam("capsHash") String capsHash,
     		@QueryParam("tag") String tag,
