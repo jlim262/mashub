@@ -53,7 +53,7 @@ public class Things {
      * @param setup_url: URL with Thing setup instructions.
      * @param support_url: URL that user should be directed to if they are in need of Thing support.
      * @param update_url: URL that user should be directed to if Thing needs a firmware update.
-     * @param firmware: Version of the Thing's firmware.
+     * @param app_version: Version of the Thing's application.
      * @param local_settings: Current local settings of the Thing (see Local settings).
      * @param semantic_state: Current state of the Thing.
      * @param capabilities: Thing capabilities.
@@ -83,7 +83,7 @@ public class Things {
     		@QueryParam("setup_url") String setupUrl,
     		@QueryParam("support_url") String supportUrl,
     		@QueryParam("update_url") String updateUrl,
-    		@QueryParam("firmware") String firmware,
+    		@QueryParam("app_version") String appVersion,
     		@QueryParam("local_settings") String localSettings,
     		@QueryParam("semantic_state") String semanticState,
     		@QueryParam("capabilities") String capabilities,
