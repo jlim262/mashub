@@ -16,14 +16,40 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Action;
 import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
+import java.util.ArrayList;
+import java.util.List;
 
-public interface Command extends Callable {
-    <V> Future<V> execute();
-    Recipe<Ingred, Action> getRecipe();
-    void setRecipe(Recipe<Ingred, Action> recipe);
+public class DefaultFridge implements Fridge<Ingred> {
+    private ArrayList<Ingred> ingreds;
+
+    public DefaultFridge() {
+        ingreds = new ArrayList<Ingred>();
+    }
+
+    @Override
+    public void put(Ingred ingred) {
+
+    }
+
+    @Override
+    public void put(List<Ingred> ingreds) {
+
+    }
+
+    @Override
+    public void remove(Ingred ingred) {
+
+    }
+
+    @Override
+    public void remove(List<Ingred> ingreds) {
+
+    }
+
+    @Override
+    public List<Ingred> listIngreds() {
+        return null;
+    }
 }

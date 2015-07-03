@@ -16,5 +16,63 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-public interface CookingQueue extends Queue<Command> {
+import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
+
+public class CookingQueue implements Queue<Command> {
+    private ArrayList<Command> queue;
+
+    public CookingQueue() {
+        queue = new ArrayList<Command>();
+    }
+
+    @Override
+    public void put(Command command) {
+
+    }
+
+    @Override
+    public Command get() {
+        Command command = null;
+        if (queue.size() > 0) {
+            command = queue.get(queue.size() - 1);
+            queue.remove(queue.size() - 1);
+        }
+        return command;
+    }
+
+    @Override
+    public void hide(Command command, int duration, TimeUnit timeUnit) {
+
+    }
+
+    @Override
+    public void delete() {
+
+    }
+
+    @Override
+    public void addLast(Command command) {
+        queue.add(command);
+    }
+
+    @Override
+    public void addFirst(Command command) {
+
+    }
+
+    @Override
+    public void addBefore(Command command, Command target) {
+
+    }
+
+    @Override
+    public void addAfter(Command command, Command target) {
+
+    }
+
+    @Override
+    public void clear() {
+
+    }
 }

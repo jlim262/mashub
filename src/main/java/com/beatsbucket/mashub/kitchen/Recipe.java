@@ -17,13 +17,29 @@
 package com.beatsbucket.mashub.kitchen;
 
 import com.beatsbucket.mashub.auth.User;
+import com.beatsbucket.mashub.kitchen.ingredient.Action;
 
 import java.util.List;
 
 public interface Recipe<I, A> {
+    //todo recipe should be saved in persistence layer such as database, file and so on. so, need to fix functions.
+
     void setOwner(User owner);
-    void setIf(I ingred, A attrib);
-    void setThen(I ingred, A attrib);
+    void setIf(I ingred, A action);
+    I getIf();
+    void setThen(I ingred, A action);
+    I getThen();
     void setFilter(Filter filter);
     void setFilters(List<Filter> filters);
+    String getId();
+
+    State getState();
+    void setState(State state);
+    Action getIfAction();
+    Action getThenAction();
+
+    enum State {
+        NOT_STARTED,
+        SCHEDULED;
+    }
 }

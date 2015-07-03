@@ -14,16 +14,34 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen;
+package com.beatsbucket.mashub.kitchen.ingredient;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Action;
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+public class DummyAction implements Action {
+    private Type type;
+    private String name;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
+    public DummyAction(String name) {
+        type = Type.READABLE;
+        this.name = name;
+    }
 
-public interface Command extends Callable {
-    <V> Future<V> execute();
-    Recipe<Ingred, Action> getRecipe();
-    void setRecipe(Recipe<Ingred, Action> recipe);
+    @Override
+    public Type getType() {
+        return type;
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public void setName(String name) {
+
+    }
+
+    @Override
+    public boolean act(Message msg) {
+        return false;
+    }
 }

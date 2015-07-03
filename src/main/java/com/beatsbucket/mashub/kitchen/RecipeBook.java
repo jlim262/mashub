@@ -33,4 +33,5 @@ public interface RecipeBook<R extends Recipe> {
     void delete(List<R> recipes);
     void update(R recipe);
     void update(List<R> recipes);
+    List<R> getRecipes();
 }
