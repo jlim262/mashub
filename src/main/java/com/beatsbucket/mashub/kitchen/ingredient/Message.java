@@ -14,16 +14,15 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen;
+package com.beatsbucket.mashub.kitchen.ingredient;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Action;
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+public interface Message {
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
+    void setType(Type type);
+    Type getType();
 
-public interface Command extends Callable {
-    <V> Future<V> execute();
-    Recipe<Ingred, Action> getRecipe();
-    void setRecipe(Recipe<Ingred, Action> recipe);
+    enum Type {
+        STRING,
+        INTEGER,
+    }
 }

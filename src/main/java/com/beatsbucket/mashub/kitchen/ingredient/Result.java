@@ -14,16 +14,25 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen;
+package com.beatsbucket.mashub.kitchen.ingredient;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Action;
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+public class Result {
+    private boolean triggered = false;
+    private String data;
 
-import java.util.concurrent.Callable;
-import java.util.concurrent.Future;
+    public String getData() {
+        return data;
+    }
 
-public interface Command extends Callable {
-    <V> Future<V> execute();
-    Recipe<Ingred, Action> getRecipe();
-    void setRecipe(Recipe<Ingred, Action> recipe);
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public boolean isTriggered() {
+        return triggered;
+    }
+
+    public void setTriggered(boolean triggered) {
+        this.triggered = triggered;
+    }
 }
