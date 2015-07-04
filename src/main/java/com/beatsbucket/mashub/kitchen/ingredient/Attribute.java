@@ -16,15 +16,5 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
-public interface Action {
-    Type getType();
-    String getName();
-    void setName(String name);
-
-    enum Type {
-        READABLE,
-        WRITABLE;
-    }
-
-    boolean act(Message msg);
+public interface Attribute {
 }

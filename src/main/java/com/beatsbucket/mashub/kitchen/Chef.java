@@ -16,8 +16,6 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
-
 import java.util.concurrent.Future;
 
 /**
@@ -25,7 +23,9 @@ import java.util.concurrent.Future;
  */
 public interface Chef<Q extends Queue, C extends Command> {
     Q setQueue(Q queue);
+    C getCommand();
+    C getAndDeleteCommand();
     Q insertCommand(C command);
-    boolean perform();
+    Future perform(C command);
     void addListener(Listener listener);
 }

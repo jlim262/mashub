@@ -79,6 +79,9 @@ public class Twitter extends AbstractSocialIngred {
 
 	}
 
-
+	@Override
+	public Future cook(String json) {
+		return null;
+	}
 
 }
