@@ -16,6 +16,10 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
+import com.beatsbucket.mashub.channel.Channel;
+
+import javax.ws.rs.NotSupportedException;
+
 public class DummyAction implements Action {
     private Type type;
     private String name;
@@ -41,7 +45,12 @@ public class DummyAction implements Action {
     }
 
     @Override
+    public void setChannel(Channel channel) {
+        throw new NotSupportedException();
+    }
+
+    @Override
     public boolean act(Message msg) {
-        return false;
+        return true;
     }
 }

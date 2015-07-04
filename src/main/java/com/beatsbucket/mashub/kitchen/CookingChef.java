@@ -71,37 +71,15 @@ public class CookingChef extends Thread implements Chef<CookingQueue, Command> {
             try {
                 Result result = future.get();
                 if (result.isTriggered()) {
-                    System.out.println("CookingChef.perform");
-                    Twitter ingred = (Twitter) cooking.getRecipe().getThen();
-                    try {
-
-                        OAuth1Credential credential = new OAuth1Credential(
-                                "187389271-LzS4gYsbp19Vya6UrpNNPgMjOHpOoosV0qMzuzaG",
-                                "JZmVrmK5YJ9nU7z858pyGw4dRBfCE6cHkPz9jL4OR60WZ");
-
-                        OAuth1Channel channel = new OAuth1Channel(
-                                "uEZxNR2Ar0IzeK56CL9cWpvqu",
-                                "nAFc8PYA4KDQdOQYEANJBL9kmtHFd5F1XHB8jLxlQ19YwarT3z",
-                                credential);
-
-                        URL url = new URL("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=twitterapi&count=1");
-                        channel.setTestUrl(url);
-
-
-                        ingred.loadChannel(channel);
-                        ingred.tweet("light is on.(" + System.currentTimeMillis() + ")");
-                        System.out.println("cooking is done.");
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
-                    } catch (MalformedURLException e) {
-                        e.printStackTrace();
-                    }
+                    System.out.println("CookingChef.perform " + "tweeted.");
                 }
             } catch (InterruptedException e) {
                 e.printStackTrace();
             } catch (ExecutionException e) {
                 e.printStackTrace();
             }
+
+
         }
         return false;
     }

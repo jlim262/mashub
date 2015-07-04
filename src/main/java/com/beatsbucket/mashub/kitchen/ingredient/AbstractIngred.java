@@ -45,7 +45,7 @@ public abstract class AbstractIngred implements Ingred {
 
     @Override
     public Result cook(Action action) {
-        if (action.getType().equals(Action.Type.READABLE)) {
+        if (action.getType().equals(Action.Type.WRITABLE)) {
             Message msg = new Message() {
                 private String msg;
 
@@ -114,5 +114,6 @@ public abstract class AbstractIngred implements Ingred {
     @Override
     public void addAction(Action action) {
         actions.add(action);
+        action.setChannel(channel);
     }
 }

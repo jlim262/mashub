@@ -44,7 +44,7 @@ public class TwitterTest {
 		
 		Twitter twitter = new Twitter();
 		twitter.loadChannel(channel);
-		twitter.tweet("Current Time millisec is " + System.currentTimeMillis());
+//		twitter.tweet("Current Time millisec is " + System.currentTimeMillis());
 		
 	}
 

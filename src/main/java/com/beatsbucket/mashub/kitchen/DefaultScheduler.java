@@ -79,10 +79,12 @@ public class DefaultScheduler extends Thread implements Scheduler {
 
 
 
-                        Result result = new Result();
-                        if (dummyIngred.checkLight()) {
-                            result.setTriggered(true);
+                        Result result = dummyIngred.observe(action);
+
+                        if (result.isTriggered()) {
                             System.out.println("light is on");
+                        } else {
+                            System.out.println("light is still off");
                         }
                         return result;
                     }

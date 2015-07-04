@@ -33,8 +33,7 @@ public class TweetAction implements Action {
     private OAuth1Channel channel;
     private String name;
 
-    public TweetAction(String name, OAuth1Channel channel) {
-        this.channel = channel;
+    public TweetAction(String name) {
         type = Type.WRITABLE;
         this.name = name;
     }
@@ -52,6 +51,11 @@ public class TweetAction implements Action {
     @Override
     public void setName(String name) {
 
+    }
+
+    @Override
+    public void setChannel(Channel channel) {
+        this.channel = (OAuth1Channel) channel;
     }
 
     @Override

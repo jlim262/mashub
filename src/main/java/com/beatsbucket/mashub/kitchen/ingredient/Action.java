@@ -16,10 +16,13 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
+import com.beatsbucket.mashub.channel.Channel;
+
 public interface Action {
     Type getType();
     String getName();
     void setName(String name);
+    void setChannel(Channel channel);
 
     enum Type {
         READABLE,

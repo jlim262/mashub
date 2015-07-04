@@ -16,17 +16,19 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Action;
-import com.beatsbucket.mashub.kitchen.ingredient.DummyIngred;
-import com.beatsbucket.mashub.kitchen.ingredient.Twitter;
+import com.beatsbucket.mashub.channel.OAuth1Channel;
+import com.beatsbucket.mashub.channel.OAuth1Credential;
+import com.beatsbucket.mashub.kitchen.ingredient.*;
 import org.junit.Test;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class BasicWorkFlowTest {
     @Test
-    public void runWorkFlowTest() {
+    public void runWorkFlowTest() throws MalformedURLException {
 
 
         ObservationQueue observationQueue = new ObservationQueue();
@@ -43,35 +45,23 @@ public class BasicWorkFlowTest {
         Twitter twitterIngred = new Twitter();
 
         SimpleRecipe recipe = new SimpleRecipe("dummyRecipe");
-        Action dummyAction = new Action() {
-            String name;
-            @Override
-            public String getName() {
-                return name;
-            }
-
-            @Override
-            public void setName(String name) {
-                this.name = name;
-            }
-        };
-        dummyAction.setName("checkLight");
+        Action dummyAction = new DummyAction("checkLight");
         recipe.setIf(dummyIngred, dummyAction);
 
-        Action tweetAction = new Action() {
-            String name;
-            @Override
-            public String getName() {
-                return name;
-            }
+        Action tweetAction = new TweetAction("tweet");
+        OAuth1Credential credential = new OAuth1Credential(
+                "187389271-LzS4gYsbp19Vya6UrpNNPgMjOHpOoosV0qMzuzaG",
+                "JZmVrmK5YJ9nU7z858pyGw4dRBfCE6cHkPz9jL4OR60WZ");
 
-            @Override
-            public void setName(String name) {
-                this.name = name;
-            }
-        };
-        tweetAction.setName("tweet");
+        OAuth1Channel channel = new OAuth1Channel(
+                "uEZxNR2Ar0IzeK56CL9cWpvqu",
+                "nAFc8PYA4KDQdOQYEANJBL9kmtHFd5F1XHB8jLxlQ19YwarT3z",
+                credential);
 
+        URL url = new URL("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=twitterapi&count=1");
+        channel.setTestUrl(url);
+        twitterIngred.loadChannel(channel);
+        twitterIngred.addAction(tweetAction);
         recipe.setThen(twitterIngred, tweetAction);
 
 
