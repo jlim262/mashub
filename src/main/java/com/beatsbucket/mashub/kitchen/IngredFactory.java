@@ -16,19 +16,5 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
-
-public class IngredFactory {
-    public static Ingred createIngred(String nameOfIngred) throws ClassNotFoundException {
-        Class clazz = Class.forName(nameOfIngred);
-        Ingred ingred = null;
-        try {
-            ingred = (Ingred) clazz.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return ingred;
-    }
+public interface IngredFactory {
 }

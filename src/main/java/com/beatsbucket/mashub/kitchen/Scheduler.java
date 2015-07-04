@@ -16,9 +16,5 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-import java.util.concurrent.Future;
-
 public interface Scheduler {
-    Future cookScheduledRecipe();
-    Future cookRecipe(Recipe recipe);
 }

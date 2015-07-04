@@ -16,14 +16,8 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Action;
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
-
-import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
-public interface Command extends Callable {
+public interface Command {
     <V> Future<V> execute();
-    Recipe<Ingred, Action> getRecipe();
-    void setRecipe(Recipe<Ingred, Action> recipe);
 }
