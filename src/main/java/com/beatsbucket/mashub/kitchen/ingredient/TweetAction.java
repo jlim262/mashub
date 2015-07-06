@@ -46,17 +46,12 @@ public class TweetAction implements Action {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public void setName(String name) {
-
-    }
-
-    @Override
-    public void setChannel(Channel channel) {
-        this.channel = (OAuth1Channel) channel;
+        this.name = name;
     }
 
     @Override
@@ -66,7 +61,7 @@ public class TweetAction implements Action {
     }
 
     @Override
-    public boolean act(Message msg) {
+    public Result act(Message msg) {
         Client client = ClientBuilder.newClient();
 
         ConsumerCredentials consumerCredentials = new ConsumerCredentials(
@@ -83,12 +78,16 @@ public class TweetAction implements Action {
         client.register(filterFeature);
 
         try {
-            String responseMsg = client.target("https://api.twitter.com/1.1/statuses/update.json?status="+ URLEncoder.encode("test1", "UTF-8")).request()
+            Result result = new Result();
+            String responseMsg = client.target("https://api.twitter.com/1.1/statuses/update.json?status="+ URLEncoder.encode(msg.getData(), "UTF-8")).request()
                     .property(OAuth1ClientSupport.OAUTH_PROPERTY_ACCESS_TOKEN, storedToken).post(null).toString();
+
+            result.setData(responseMsg);
+            return result;
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
-        return true;
+        return null;
     }
 }

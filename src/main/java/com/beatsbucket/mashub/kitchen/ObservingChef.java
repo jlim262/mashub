@@ -18,6 +18,7 @@ package com.beatsbucket.mashub.kitchen;
 
 import com.beatsbucket.mashub.kitchen.ingredient.Action;
 import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+import com.beatsbucket.mashub.kitchen.ingredient.Message;
 import com.beatsbucket.mashub.kitchen.ingredient.Result;
 
 import java.util.concurrent.ExecutionException;
@@ -71,7 +72,7 @@ public class ObservingChef extends Thread implements Chef<Queue, Command> {
     public boolean perform() {
         Command nextCommand = observationQueue.get();
         if (nextCommand != null) {
-            Result result = observe((Observation) nextCommand);
+            final Result result = observe((Observation) nextCommand);
 
             if (true) {
                 final Recipe recipe = nextCommand.getRecipe();
@@ -100,9 +101,12 @@ public class ObservingChef extends Thread implements Chef<Queue, Command> {
 
                         recipe.setState(Recipe.State.NOT_STARTED);
 
-                        Result result = ingred.cook(action);
-                        result.setTriggered(true);
-                        return result;
+                        Message msg = new Message();
+                        msg.setData(result.getData());
+
+                        Result cookResult = ingred.cook(action, msg);
+                        cookResult.setTriggered(true);
+                        return cookResult;
                     }
                 };
 

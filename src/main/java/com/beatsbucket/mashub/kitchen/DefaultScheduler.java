@@ -16,10 +16,7 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Action;
-import com.beatsbucket.mashub.kitchen.ingredient.DummyIngred;
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
-import com.beatsbucket.mashub.kitchen.ingredient.Result;
+import com.beatsbucket.mashub.kitchen.ingredient.*;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -78,8 +75,9 @@ public class DefaultScheduler extends Thread implements Scheduler {
                         DummyIngred dummyIngred = (DummyIngred) ingred;
 
 
-
-                        Result result = dummyIngred.observe(action);
+                        Message msg = new Message();
+                        msg.setData("dummy message");
+                        Result result = dummyIngred.observe(action, msg);
 
                         if (result.isTriggered()) {
                             System.out.println("light is on");

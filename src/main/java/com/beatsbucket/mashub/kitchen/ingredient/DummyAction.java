@@ -37,17 +37,12 @@ public class DummyAction implements Action {
 
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public void setName(String name) {
-
-    }
-
-    @Override
-    public void setChannel(Channel channel) {
-        throw new NotSupportedException();
+        this.name = name;
     }
 
     @Override
@@ -56,7 +51,15 @@ public class DummyAction implements Action {
     }
 
     @Override
-    public boolean act(Message msg) {
-        return true;
+    public Result act(Message msg) {
+        if (parent != null) {
+            Result result = new Result();
+            result.setData(String.valueOf(System.currentTimeMillis()));
+            DummyIngred ingred = (DummyIngred) parent;
+            result.setTriggered(ingred.checkLight());
+            return result;
+        } else {
+            return null;
+        }
     }
 }

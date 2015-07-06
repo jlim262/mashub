@@ -26,8 +26,8 @@ public interface Ingred {
     <C extends Channel> void loadChannel(C channel);
     Channel getChannel();
     void advertise(Fridge fridge);
-    Result cook(Action action);
-    Result observe(Action action);
+    Result cook(Action action, Message msg);
+    Result observe(Action action, Message msg);
     List<Action> getActions();
     Action getAction(String name);
     IngredInfo getInfo();

@@ -16,13 +16,23 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
-public interface Message {
+public class Message {
 
-    void setType(Type type);
+    private String data;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    /*void setType(Type type);
     Type getType();
 
     enum Type {
         STRING,
         INTEGER,
-    }
+    }*/
 }

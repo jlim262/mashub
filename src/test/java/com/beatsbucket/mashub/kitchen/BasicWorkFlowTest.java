@@ -46,6 +46,7 @@ public class BasicWorkFlowTest {
 
         SimpleRecipe recipe = new SimpleRecipe("dummyRecipe");
         Action dummyAction = new DummyAction("checkLight");
+        dummyIngred.addAction(dummyAction);
         recipe.setIf(dummyIngred, dummyAction);
 
         Action tweetAction = new TweetAction("tweet");
