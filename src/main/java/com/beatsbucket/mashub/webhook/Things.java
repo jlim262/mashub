@@ -25,7 +25,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 @Path("things")
-public class Things {
+public class Things implements Communicable {
 	
     /**
      * Method handling HTTP GET requests. The returned object will be sent
@@ -94,5 +94,26 @@ public class Things {
     	
         return "";
     }
+    
+    // Obtaining the OAuth2 authorization_code
+    public void getAuthCode(){}
+
+	@Override
+	public String getPolicy(String json) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String updateStatus(String json) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getTask(String json) {
+		// TODO Auto-generated method stub
+		return null;
+	}
     
 }

@@ -14,13 +14,10 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.manager;
+package com.beatsbucket.mashub.webhook;
 
-import java.util.List;
-
-import com.beatsbucket.mashub.auth.User;
-
-public class UserManager extends AbstractManager {
-	User getUser(){return null;};
-	List<User> getUsers(){return null;};
+public interface Communicable {
+	public String getPolicy(String json);
+    public String updateStatus(String json);
+    public String getTask(String json);
 }
