@@ -23,7 +23,7 @@ public interface Action {
     String getName();
     void setName(String name);
     void setChannel(Channel channel);
-
+    void setIngred(Ingred parent);
     enum Type {
         READABLE,
         WRITABLE;

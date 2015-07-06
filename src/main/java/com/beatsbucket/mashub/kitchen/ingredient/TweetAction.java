@@ -32,6 +32,7 @@ public class TweetAction implements Action {
     private Type type;
     private OAuth1Channel channel;
     private String name;
+    private Ingred parent;
 
     public TweetAction(String name) {
         type = Type.WRITABLE;
@@ -59,6 +60,12 @@ public class TweetAction implements Action {
     }
 
     @Override
+    public void setIngred(Ingred parent) {
+        this.parent = parent;
+        this.channel = (OAuth1Channel) parent.getChannel();
+    }
+
+    @Override
     public boolean act(Message msg) {
         Client client = ClientBuilder.newClient();
 
@@ -76,7 +83,7 @@ public class TweetAction implements Action {
         client.register(filterFeature);
 
         try {
-            String responseMsg = client.target("https://api.twitter.com/1.1/statuses/update.json?status="+ URLEncoder.encode("test", "UTF-8")).request()
+            String responseMsg = client.target("https://api.twitter.com/1.1/statuses/update.json?status="+ URLEncoder.encode("test1", "UTF-8")).request()
                     .property(OAuth1ClientSupport.OAUTH_PROPERTY_ACCESS_TOKEN, storedToken).post(null).toString();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();

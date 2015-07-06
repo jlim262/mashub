@@ -39,6 +39,11 @@ public abstract class AbstractIngred implements Ingred {
     }
 
     @Override
+    public Channel getChannel() {
+        return channel;
+    }
+
+    @Override
     public void advertise(Fridge fridge) {
         fridge.put(this);
     }
@@ -114,6 +119,7 @@ public abstract class AbstractIngred implements Ingred {
     @Override
     public void addAction(Action action) {
         actions.add(action);
-        action.setChannel(channel);
+        //action.setChannel(channel);
+        action.setIngred(this);
     }
 }

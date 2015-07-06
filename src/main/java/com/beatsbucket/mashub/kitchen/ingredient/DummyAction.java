@@ -23,6 +23,7 @@ import javax.ws.rs.NotSupportedException;
 public class DummyAction implements Action {
     private Type type;
     private String name;
+    private Ingred parent;
 
     public DummyAction(String name) {
         type = Type.READABLE;
@@ -47,6 +48,11 @@ public class DummyAction implements Action {
     @Override
     public void setChannel(Channel channel) {
         throw new NotSupportedException();
+    }
+
+    @Override
+    public void setIngred(Ingred parent) {
+        this.parent = parent;
     }
 
     @Override
