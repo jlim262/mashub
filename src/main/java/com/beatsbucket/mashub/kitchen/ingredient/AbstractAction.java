@@ -16,6 +16,22 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
-public interface ReadableAction extends Action {
-    Result observe(String targetJson);
+public abstract class AbstractAction implements Action {
+    protected String name;
+    protected Ingred parent;
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void setIngred(Ingred parent) {
+        this.parent = parent;
+    }
 }

@@ -16,14 +16,8 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-import com.beatsbucket.mashub.channel.OAuth1Channel;
-import com.beatsbucket.mashub.channel.OAuth1Credential;
 import com.beatsbucket.mashub.kitchen.ingredient.Result;
-import com.beatsbucket.mashub.kitchen.ingredient.Twitter;
 
-import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;

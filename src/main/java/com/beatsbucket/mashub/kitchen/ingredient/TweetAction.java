@@ -16,8 +16,8 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
-import com.beatsbucket.mashub.channel.Channel;
 import com.beatsbucket.mashub.channel.OAuth1Channel;
+import com.beatsbucket.mashub.util.ObjectUtil;
 import org.glassfish.jersey.client.oauth1.AccessToken;
 import org.glassfish.jersey.client.oauth1.ConsumerCredentials;
 import org.glassfish.jersey.client.oauth1.OAuth1ClientSupport;
@@ -28,20 +28,13 @@ import javax.ws.rs.core.Feature;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
-public class TweetAction implements Action {
-    private Type type;
+public class TweetAction extends AbstractAction implements WritableAction {
     private OAuth1Channel channel;
     private String name;
     private Ingred parent;
 
     public TweetAction(String name) {
-        type = Type.WRITABLE;
         this.name = name;
-    }
-
-    @Override
-    public Type getType() {
-        return type;
     }
 
     @Override
@@ -61,7 +54,8 @@ public class TweetAction implements Action {
     }
 
     @Override
-    public Result act(Message msg) {
+    public Result run(Message message) {
+        ObjectUtil.checkNotNull(message, "message is null");
         Client client = ClientBuilder.newClient();
 
         ConsumerCredentials consumerCredentials = new ConsumerCredentials(
@@ -79,7 +73,7 @@ public class TweetAction implements Action {
 
         try {
             Result result = new Result();
-            String responseMsg = client.target("https://api.twitter.com/1.1/statuses/update.json?status="+ URLEncoder.encode(msg.getData(), "UTF-8")).request()
+            String responseMsg = client.target("https://api.twitter.com/1.1/statuses/update.json?status="+ URLEncoder.encode(message.getData(), "UTF-8")).request()
                     .property(OAuth1ClientSupport.OAUTH_PROPERTY_ACCESS_TOKEN, storedToken).post(null).toString();
 
             result.setData(responseMsg);

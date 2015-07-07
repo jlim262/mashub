@@ -16,17 +16,8 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
-import com.beatsbucket.mashub.channel.Channel;
-
 public interface Action {
-    Type getType();
     String getName();
     void setName(String name);
     void setIngred(Ingred parent);
-    enum Type {
-        READABLE,
-        WRITABLE;
-    }
-
-    Result act(Message msg);
 }

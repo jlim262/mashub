@@ -57,27 +57,12 @@ public class DefaultScheduler extends Thread implements Scheduler {
                     public Object call() throws Exception {
                         //Ingred ingred = IngredFactory.createIngred(recipe.getIf().getInfo().getName());
                         Ingred ingred = recipe.getIf();
-                        Action action = recipe.getIfAction();
-
-                        /*Class clazz;
-                        clazz = ingred.getClass();
-                        try {
-                            Method method = clazz.getMethod(action.getName());
-                            method.invoke(ingred);
-                        } catch (NoSuchMethodException e) {
-                            e.printStackTrace();
-                        } catch (InvocationTargetException e) {
-                            e.printStackTrace();
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        }*/
+                        ReadableAction action = (ReadableAction) recipe.getIfAction();
 
                         DummyIngred dummyIngred = (DummyIngred) ingred;
-
-
-                        Message msg = new Message();
-                        msg.setData("dummy message");
-                        Result result = dummyIngred.observe(action, msg);
+                        //todo should be json string
+                        String targetJson = "dummy message";
+                        Result result = dummyIngred.observe(action, targetJson);
 
                         if (result.isTriggered()) {
                             System.out.println("light is on");
@@ -87,11 +72,11 @@ public class DefaultScheduler extends Thread implements Scheduler {
                         return result;
                     }
 
-                    @Override
+                    /*@Override
                     public <V> Future<V> execute() {
 
                         return null;
-                    }
+                    }*/
 
                     @Override
                     public Recipe<Ingred, Action> getRecipe() {

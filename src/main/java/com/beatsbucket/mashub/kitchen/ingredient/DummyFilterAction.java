@@ -16,6 +16,11 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
-public interface ReadableAction extends Action {
-    Result observe(String targetJson);
+public class DummyFilterAction extends AbstractAction implements FilterAction {
+    @Override
+    public Message run(Message message) {
+        String data = "|" + message.getData() + "|";
+        message.setData(data);
+        return message;
+    }
 }

@@ -29,27 +29,58 @@ import java.util.concurrent.Executors;
 public class BasicWorkFlowTest {
     @Test
     public void runWorkFlowTest() throws MalformedURLException {
-
-
+        // creation queues
         ObservationQueue observationQueue = new ObservationQueue();
         CookingQueue cookingQueue = new CookingQueue();
+
+        // executorService for chefs
         ExecutorService es = Executors.newScheduledThreadPool(5);
 
+        // creation chefs and let them work
         ObservingChef observingChef = new ObservingChef(observationQueue, cookingQueue, es);
         CookingChef cookingChef = new CookingChef(cookingQueue, es);
-
         observingChef.start();
         cookingChef.start();
 
+        // creation ingredients and actions
         DummyIngred dummyIngred = new DummyIngred();
-        Twitter twitterIngred = new Twitter();
-
-        SimpleRecipe recipe = new SimpleRecipe("dummyRecipe");
         Action dummyAction = new DummyAction("checkLight");
         dummyIngred.addAction(dummyAction);
-        recipe.setIf(dummyIngred, dummyAction);
-
+        Twitter twitterIngred = new Twitter();
         Action tweetAction = new TweetAction("tweet");
+
+        // creation a filter
+        DummyFilterAction filterAction = new DummyFilterAction();
+
+        // creation recipe
+        SimpleRecipe recipe = new SimpleRecipe("dummyRecipe");
+
+        // write recipe
+        recipe.setIf(dummyIngred, dummyAction);
+        recipe.addFilter(filterAction);
+        OAuth1Channel channel = getOAuth1Channel();
+        twitterIngred.loadChannel(channel);
+        twitterIngred.addAction(tweetAction);
+        recipe.setThen(twitterIngred, tweetAction);
+
+        // add the recipe to the recipeBook
+        DefaultRecipeBook recipeBook = new DefaultRecipeBook();
+        recipeBook.add(recipe);
+
+        // starting a scheduler which read the recipebook
+        DefaultScheduler scheduler = new DefaultScheduler(recipeBook, observationQueue);
+        scheduler.start();
+        recipe.setState(Recipe.State.SCHEDULED);
+
+        try {
+            // waiting for finishing the basic flow
+            Thread.sleep(60000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private OAuth1Channel getOAuth1Channel() throws MalformedURLException {
         OAuth1Credential credential = new OAuth1Credential(
                 "187389271-LzS4gYsbp19Vya6UrpNNPgMjOHpOoosV0qMzuzaG",
                 "JZmVrmK5YJ9nU7z858pyGw4dRBfCE6cHkPz9jL4OR60WZ");
@@ -61,24 +92,6 @@ public class BasicWorkFlowTest {
 
         URL url = new URL("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=twitterapi&count=1");
         channel.setTestUrl(url);
-        twitterIngred.loadChannel(channel);
-        twitterIngred.addAction(tweetAction);
-        recipe.setThen(twitterIngred, tweetAction);
-
-
-        DefaultRecipeBook recipeBook = new DefaultRecipeBook();
-        recipeBook.add(recipe);
-
-        DefaultScheduler scheduler = new DefaultScheduler(recipeBook, observationQueue);
-        scheduler.start();
-
-        recipe.setState(Recipe.State.SCHEDULED);
-
-        try {
-            Thread.sleep(60000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        return channel;
     }
-
 }

@@ -20,14 +20,13 @@ import com.beatsbucket.mashub.channel.Channel;
 import com.beatsbucket.mashub.kitchen.Fridge;
 
 import java.util.List;
-import java.util.concurrent.Future;
 
 public interface Ingred {
     <C extends Channel> void loadChannel(C channel);
     Channel getChannel();
     void advertise(Fridge fridge);
-    Result cook(Action action, Message msg);
-    Result observe(Action action, Message msg);
+    Result run(WritableAction action, Message message);
+    Result observe(ReadableAction action, String targetJson);
     List<Action> getActions();
     Action getAction(String name);
     IngredInfo getInfo();

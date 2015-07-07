@@ -17,4 +17,5 @@
 package com.beatsbucket.mashub.kitchen.ingredient;
 
 public interface WritableAction extends Action {
+    Result run(Message message);
 }

@@ -18,8 +18,8 @@ package com.beatsbucket.mashub.kitchen;
 
 import com.beatsbucket.mashub.auth.User;
 import com.beatsbucket.mashub.kitchen.ingredient.Action;
+import com.beatsbucket.mashub.kitchen.ingredient.FilterAction;
 import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
-import com.beatsbucket.mashub.kitchen.ingredient.IngredInfo;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class SimpleRecipe implements Recipe<Ingred, Action> {
     private String id;
     private Ingred causeIngred, effectIngred;
     private Action causeAction, effectAction;
-    private LinkedList<Filter> filterList;
+    private LinkedList<FilterAction> filterActionList;
     private State state;
 
     //todo should have scheduling trigger
@@ -37,6 +37,7 @@ public class SimpleRecipe implements Recipe<Ingred, Action> {
     public SimpleRecipe(String name) {
         this.name = name;
         state = State.NOT_STARTED;
+        filterActionList = new LinkedList<FilterAction>();
     }
 
     @Override
@@ -67,13 +68,23 @@ public class SimpleRecipe implements Recipe<Ingred, Action> {
     }
 
     @Override
-    public void setFilter(Filter filter) {
-
+    public void addFilter(FilterAction filterAction) {
+        filterActionList.add(filterAction);
     }
 
     @Override
-    public void setFilters(List<Filter> filters) {
+    public void addFilters(List<FilterAction> filterActions) {
+        filterActionList.addAll(filterActions);
+    }
 
+    @Override
+    public void setFilters(List<FilterAction> filterActions) {
+        this.filterActionList = (LinkedList<FilterAction>) filterActions;
+    }
+
+    @Override
+    public List<FilterAction> getFilters() {
+        return filterActionList;
     }
 
     @Override

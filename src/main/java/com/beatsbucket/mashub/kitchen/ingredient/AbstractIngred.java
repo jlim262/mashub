@@ -49,12 +49,15 @@ public abstract class AbstractIngred implements Ingred {
     }
 
     @Override
-    public Result cook(Action action, Message msg) {
-        if (action.getType().equals(Action.Type.WRITABLE)) {
-            Result result = action.act(msg);
-            return result;
-        }
-        return null;
+    public Result run(WritableAction action, Message message) {
+        Result result = action.run(message);
+        return result;
+    }
+
+    @Override
+    public Result observe(ReadableAction action, String targetJson) {
+        Result result = action.observe(targetJson);
+        return result;
     }
 
     @Override
@@ -73,16 +76,6 @@ public abstract class AbstractIngred implements Ingred {
     }
 
     @Override
-    public Result observe(Action action, Message msg) {
-        if (action.getType().equals(Action.Type.READABLE)) {
-
-            Result result = action.act(msg);
-            return result;
-        }
-        return null;
-    }
-
-    @Override
     public IngredInfo getInfo() {
         return ingredInfo;
     }
@@ -90,7 +83,6 @@ public abstract class AbstractIngred implements Ingred {
     @Override
     public void addAction(Action action) {
         actions.add(action);
-        //action.setChannel(channel);
         action.setIngred(this);
     }
 }

@@ -16,14 +16,11 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
-import java.util.concurrent.Future;
-
 public class DummyIngred extends AbstractIngred {
     private boolean light = false;
     private boolean stop = true;
 
     public DummyIngred() {
-
         //startSwitching();
         light = true;
     }

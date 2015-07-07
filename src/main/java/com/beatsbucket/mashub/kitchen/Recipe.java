@@ -18,6 +18,7 @@ package com.beatsbucket.mashub.kitchen;
 
 import com.beatsbucket.mashub.auth.User;
 import com.beatsbucket.mashub.kitchen.ingredient.Action;
+import com.beatsbucket.mashub.kitchen.ingredient.FilterAction;
 
 import java.util.List;
 
@@ -29,8 +30,10 @@ public interface Recipe<I, A> {
     I getIf();
     void setThen(I ingred, A action);
     I getThen();
-    void setFilter(Filter filter);
-    void setFilters(List<Filter> filters);
+    void addFilter(FilterAction filterAction);
+    void addFilters(List<FilterAction> filterActions);
+    void setFilters(List<FilterAction> filterActions);
+    List<FilterAction> getFilters();
     String getId();
 
     State getState();

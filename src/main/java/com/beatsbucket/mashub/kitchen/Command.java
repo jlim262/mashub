@@ -23,7 +23,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.Future;
 
 public interface Command extends Callable {
-    <V> Future<V> execute();
+    /*<V> Future<V> execute();*/
     Recipe<Ingred, Action> getRecipe();
     void setRecipe(Recipe<Ingred, Action> recipe);
 }

@@ -16,11 +16,9 @@
 
 package com.beatsbucket.mashub.kitchen;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Action;
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
-import com.beatsbucket.mashub.kitchen.ingredient.Message;
-import com.beatsbucket.mashub.kitchen.ingredient.Result;
+import com.beatsbucket.mashub.kitchen.ingredient.*;
 
+import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Future;
@@ -74,14 +72,24 @@ public class ObservingChef extends Thread implements Chef<Queue, Command> {
         if (nextCommand != null) {
             final Result result = observe((Observation) nextCommand);
 
-            if (true) {
+            if (result.isTriggered()) {
                 final Recipe recipe = nextCommand.getRecipe();
 
+                List<FilterAction> filterActionList = recipe.getFilters();
+
+                Message message = new Message();
+                message.setData(result.getData());
+                for (FilterAction filterAction : filterActionList) {
+                    message = filterAction.run(message);
+                }
+
+                final Message finalMessage = message;
+
                 Cooking cooking = new Cooking() {
-                    @Override
+                    /*@Override
                     public <V> Future<V> execute() {
                         return null;
-                    }
+                    }*/
 
                     @Override
                     public Recipe<Ingred, Action> getRecipe() {
@@ -95,16 +103,12 @@ public class ObservingChef extends Thread implements Chef<Queue, Command> {
 
                     @Override
                     public Object call() throws Exception {
-
                         Ingred ingred = (Ingred) recipe.getThen();
-                        Action action = (Action) recipe.getThenAction();
+                        WritableAction action = (WritableAction) recipe.getThenAction();
 
                         recipe.setState(Recipe.State.NOT_STARTED);
 
-                        Message msg = new Message();
-                        msg.setData(result.getData());
-
-                        Result cookResult = ingred.cook(action, msg);
+                        Result cookResult = ingred.run(action, finalMessage);
                         cookResult.setTriggered(true);
                         return cookResult;
                     }
@@ -115,12 +119,10 @@ public class ObservingChef extends Thread implements Chef<Queue, Command> {
             }
         }
 
-
         return false;
     }
 
     public Result observe(Observation observation) {
-
         Future<Result> future = executorService.submit(observation);
 
         Result result = null;
@@ -131,7 +133,6 @@ public class ObservingChef extends Thread implements Chef<Queue, Command> {
         } catch (ExecutionException e) {
             e.printStackTrace();
         }
-
         return result;
     }
 

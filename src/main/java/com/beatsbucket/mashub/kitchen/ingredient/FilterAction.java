@@ -16,6 +16,6 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
-public interface ReadableAction extends Action {
-    Result observe(String targetJson);
+public interface FilterAction extends Action {
+    Message run(Message message);
 }

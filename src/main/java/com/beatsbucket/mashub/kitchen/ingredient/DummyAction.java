@@ -16,50 +16,27 @@
 
 package com.beatsbucket.mashub.kitchen.ingredient;
 
-import com.beatsbucket.mashub.channel.Channel;
+import com.beatsbucket.mashub.util.ObjectUtil;
 
-import javax.ws.rs.NotSupportedException;
-
-public class DummyAction implements Action {
-    private Type type;
-    private String name;
-    private Ingred parent;
+public class DummyAction extends AbstractAction implements ReadableAction {
 
     public DummyAction(String name) {
-        type = Type.READABLE;
         this.name = name;
     }
 
     @Override
-    public Type getType() {
-        return type;
-    }
+    public Result observe(String targetJson) {
+        ObjectUtil.checkNotNull(parent, "parent ingred is null");
+        ObjectUtil.checkNotNull(targetJson, "json string is null");
 
-    @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    @Override
-    public void setIngred(Ingred parent) {
-        this.parent = parent;
-    }
-
-    @Override
-    public Result act(Message msg) {
-        if (parent != null) {
-            Result result = new Result();
+        DummyIngred ingred = (DummyIngred) parent;
+        Result result = new Result();
+        if (ingred.checkLight()) {
+            result.setTriggered(true);
             result.setData(String.valueOf(System.currentTimeMillis()));
-            DummyIngred ingred = (DummyIngred) parent;
-            result.setTriggered(ingred.checkLight());
-            return result;
         } else {
-            return null;
+            result.setTriggered(false);
         }
+        return result;
     }
 }
