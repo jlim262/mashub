@@ -4,3 +4,6 @@
 
 ## E-mail
 mashub.beatsbucket@gmail.com
+
+## Twitter
+mashub.beatsbucket
