@@ -14,21 +14,24 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen;
+package com.beatsbucket.mashub.kitchen.ingredient;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+public abstract class AbstractAction implements Action {
+    protected String name;
+    protected Ingred parent;
 
-public class IngredFactory {
-    public static Ingred createIngred(String nameOfIngred) throws ClassNotFoundException {
-        Class clazz = Class.forName(nameOfIngred);
-        Ingred ingred = null;
-        try {
-            ingred = (Ingred) clazz.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return ingred;
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Override
+    public void setIngred(Ingred parent) {
+        this.parent = parent;
     }
 }

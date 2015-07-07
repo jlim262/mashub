@@ -14,21 +14,25 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen;
+package com.beatsbucket.mashub.kitchen.ingredient;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+public class Result {
+    private boolean triggered = false;
+    private String data;
 
-public class IngredFactory {
-    public static Ingred createIngred(String nameOfIngred) throws ClassNotFoundException {
-        Class clazz = Class.forName(nameOfIngred);
-        Ingred ingred = null;
-        try {
-            ingred = (Ingred) clazz.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return ingred;
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    public boolean isTriggered() {
+        return triggered;
+    }
+
+    public void setTriggered(boolean triggered) {
+        this.triggered = triggered;
     }
 }

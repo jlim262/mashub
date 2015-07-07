@@ -18,17 +18,38 @@ package com.beatsbucket.mashub.kitchen;
 
 import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
 
-public class IngredFactory {
-    public static Ingred createIngred(String nameOfIngred) throws ClassNotFoundException {
-        Class clazz = Class.forName(nameOfIngred);
-        Ingred ingred = null;
-        try {
-            ingred = (Ingred) clazz.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return ingred;
+import java.util.ArrayList;
+import java.util.List;
+
+public class DefaultFridge implements Fridge<Ingred> {
+    private ArrayList<Ingred> ingreds;
+
+    public DefaultFridge() {
+        ingreds = new ArrayList<Ingred>();
+    }
+
+    @Override
+    public void put(Ingred ingred) {
+
+    }
+
+    @Override
+    public void put(List<Ingred> ingreds) {
+
+    }
+
+    @Override
+    public void remove(Ingred ingred) {
+
+    }
+
+    @Override
+    public void remove(List<Ingred> ingreds) {
+
+    }
+
+    @Override
+    public List<Ingred> listIngreds() {
+        return null;
     }
 }

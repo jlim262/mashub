@@ -19,10 +19,16 @@ package com.beatsbucket.mashub.kitchen.ingredient;
 import com.beatsbucket.mashub.channel.Channel;
 import com.beatsbucket.mashub.kitchen.Fridge;
 
-import java.util.concurrent.Future;
+import java.util.List;
 
 public interface Ingred {
     <C extends Channel> void loadChannel(C channel);
+    Channel getChannel();
     void advertise(Fridge fridge);
-    Future cook(String json);
+    Result run(WritableAction action, Message message);
+    Result observe(ReadableAction action, String targetJson);
+    List<Action> getActions();
+    Action getAction(String name);
+    IngredInfo getInfo();
+    void addAction(Action action);
 }
