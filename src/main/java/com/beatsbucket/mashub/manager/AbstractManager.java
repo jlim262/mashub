@@ -14,21 +14,8 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen;
+package com.beatsbucket.mashub.manager;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+public class AbstractManager {
 
-public class IngredFactory {
-    public static Ingred createIngred(String nameOfIngred) throws ClassNotFoundException {
-        Class clazz = Class.forName(nameOfIngred);
-        Ingred ingred = null;
-        try {
-            ingred = (Ingred) clazz.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return ingred;
-    }
 }

@@ -22,7 +22,6 @@ import com.beatsbucket.mashub.kitchen.Fridge;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.Future;
 
 public abstract class AbstractIngred implements Ingred {
     protected OAuth1Channel channel;

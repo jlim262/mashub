@@ -30,7 +30,6 @@ public class Message {
 
     /*void setType(Type type);
     Type getType();
-
     enum Type {
         STRING,
         INTEGER,

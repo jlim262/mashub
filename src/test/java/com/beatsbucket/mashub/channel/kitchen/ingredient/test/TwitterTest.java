@@ -20,8 +20,6 @@ import java.net.URL;
 
 import org.junit.Test;
 
-import sun.util.resources.CalendarData;
-
 import com.beatsbucket.mashub.channel.OAuth1Channel;
 import com.beatsbucket.mashub.channel.OAuth1Credential;
 import com.beatsbucket.mashub.kitchen.ingredient.Twitter;
@@ -45,6 +43,27 @@ public class TwitterTest {
 		Twitter twitter = new Twitter();
 		twitter.loadChannel(channel);
 //		twitter.tweet("Current Time millisec is " + System.currentTimeMillis());
+		
+	}
+	
+	@Test
+	public void testGetTimeline() throws Exception {
+		OAuth1Credential credential = new OAuth1Credential(
+				"187389271-LzS4gYsbp19Vya6UrpNNPgMjOHpOoosV0qMzuzaG",
+				"JZmVrmK5YJ9nU7z858pyGw4dRBfCE6cHkPz9jL4OR60WZ"); 
+		
+		OAuth1Channel channel = new OAuth1Channel(
+				"uEZxNR2Ar0IzeK56CL9cWpvqu",
+				"nAFc8PYA4KDQdOQYEANJBL9kmtHFd5F1XHB8jLxlQ19YwarT3z",
+				credential);
+		
+		URL url = new URL("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=twitterapi&count=1");  
+		channel.setTestUrl(url);
+		
+		Twitter twitter = new Twitter();
+		twitter.loadChannel(channel);
+		//String resp = twitter.getTimeline(3);
+		//System.out.println(resp);
 		
 	}
 
