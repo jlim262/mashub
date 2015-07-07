@@ -14,21 +14,13 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen;
+package com.beatsbucket.mashub.kitchen.ingredient;
 
-import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
-
-public class IngredFactory {
-    public static Ingred createIngred(String nameOfIngred) throws ClassNotFoundException {
-        Class clazz = Class.forName(nameOfIngred);
-        Ingred ingred = null;
-        try {
-            ingred = (Ingred) clazz.newInstance();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-        return ingred;
+public class DummyFilterAction extends AbstractAction implements FilterAction {
+    @Override
+    public Message run(Message message) {
+        String data = "|" + message.getData() + "|";
+        message.setData(data);
+        return message;
     }
 }
