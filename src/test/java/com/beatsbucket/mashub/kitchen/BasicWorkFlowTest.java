@@ -82,8 +82,8 @@ public class BasicWorkFlowTest {
 
     private OAuth1Channel getOAuth1Channel() throws MalformedURLException {
         OAuth1Credential credential = new OAuth1Credential(
-                "187389271-LzS4gYsbp19Vya6UrpNNPgMjOHpOoosV0qMzuzaG",
-                "JZmVrmK5YJ9nU7z858pyGw4dRBfCE6cHkPz9jL4OR60WZ");
+                "3270752988-Cb1OqGPdgcwqFwi2uwYXg6No3HAr10z2DiL4bSY",
+                "gtdRIxhAf73eTX2vfwD2joOVCEiEBBQvCVjQ3Df96AjYb");
 
         OAuth1Channel channel = new OAuth1Channel(
                 "uEZxNR2Ar0IzeK56CL9cWpvqu",
