@@ -14,29 +14,25 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.channel.test;
+package com.beatsbucket.mashub.channel;
 
 import java.net.URL;
 
 import org.junit.Test;
 
-import com.beatsbucket.mashub.channel.OAuth1Channel;
-import com.beatsbucket.mashub.channel.OAuth1Credential;
+import com.beatsbucket.mashub.channel.BasicAuthChannel;
+import com.beatsbucket.mashub.channel.BasicAuthCredential;
 
-public class OAuth1ChannelTest {
+public class BasicAuthChannelTest {
 	
 	@Test
 	public void testTest() throws Exception {
-		OAuth1Credential credential = new OAuth1Credential(
-				"187389271-LzS4gYsbp19Vya6UrpNNPgMjOHpOoosV0qMzuzaG",
-				"JZmVrmK5YJ9nU7z858pyGw4dRBfCE6cHkPz9jL4OR60WZ"); 
+		String id = System.getProperty("id");
+		String password = System.getProperty("password");
 		
-		OAuth1Channel channel = new OAuth1Channel(
-				"uEZxNR2Ar0IzeK56CL9cWpvqu",
-				"nAFc8PYA4KDQdOQYEANJBL9kmtHFd5F1XHB8jLxlQ19YwarT3z",
-				credential);
-		
-		URL url = new URL("https://api.twitter.com/1.1/statuses/user_timeline.json?screen_name=twitterapi&count=1");  
+		BasicAuthCredential credential = new BasicAuthCredential(id, password); 
+		BasicAuthChannel channel = new BasicAuthChannel(credential);
+		URL url = new URL("https://api.github.com/user");  
 		channel.setTestUrl(url);
 		
 		channel.test();

@@ -14,7 +14,7 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.webhook.test;
+package com.beatsbucket.mashub.webhook;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;

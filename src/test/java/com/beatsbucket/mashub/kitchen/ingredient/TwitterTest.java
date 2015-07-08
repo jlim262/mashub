@@ -14,7 +14,7 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.channel.kitchen.ingredient.test;
+package com.beatsbucket.mashub.kitchen.ingredient;
 
 import java.net.URL;
 
