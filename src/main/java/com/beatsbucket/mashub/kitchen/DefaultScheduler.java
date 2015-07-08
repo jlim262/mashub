@@ -17,9 +17,8 @@
 package com.beatsbucket.mashub.kitchen;
 
 import com.beatsbucket.mashub.kitchen.ingredient.*;
+import com.beatsbucket.mashub.kitchen.ingredient.dummy.DummyIngred;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.concurrent.Future;
 

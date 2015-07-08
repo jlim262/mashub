@@ -1,4 +1,4 @@
-package com.beatsbucket.mashub.kitchen.ingredient;
+package com.beatsbucket.mashub.kitchen.ingredient.twitter;
 
 import com.beatsbucket.mashub.kitchen.Fridge;
 import com.beatsbucket.mashub.kitchen.ingredient.category.AbstractSocialIngred;

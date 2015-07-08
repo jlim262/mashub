@@ -14,7 +14,9 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen.ingredient;
+package com.beatsbucket.mashub.kitchen.ingredient.dummy;
+
+import com.beatsbucket.mashub.kitchen.ingredient.AbstractIngred;
 
 public class DummyIngred extends AbstractIngred {
     private boolean light = false;

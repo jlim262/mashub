@@ -14,7 +14,11 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen.ingredient;
+package com.beatsbucket.mashub.kitchen.ingredient.filter;
+
+import com.beatsbucket.mashub.kitchen.ingredient.AbstractAction;
+import com.beatsbucket.mashub.kitchen.ingredient.FilterAction;
+import com.beatsbucket.mashub.kitchen.ingredient.Message;
 
 public class DummyFilterAction extends AbstractAction implements FilterAction {
     @Override

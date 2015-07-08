@@ -14,8 +14,11 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen.ingredient;
+package com.beatsbucket.mashub.kitchen.ingredient.dummy;
 
+import com.beatsbucket.mashub.kitchen.ingredient.AbstractAction;
+import com.beatsbucket.mashub.kitchen.ingredient.ReadableAction;
+import com.beatsbucket.mashub.kitchen.ingredient.Result;
 import com.beatsbucket.mashub.util.ObjectUtil;
 
 public class DummyAction extends AbstractAction implements ReadableAction {

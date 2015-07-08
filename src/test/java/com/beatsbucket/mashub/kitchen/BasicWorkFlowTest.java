@@ -19,6 +19,11 @@ package com.beatsbucket.mashub.kitchen;
 import com.beatsbucket.mashub.channel.OAuth1Channel;
 import com.beatsbucket.mashub.channel.OAuth1Credential;
 import com.beatsbucket.mashub.kitchen.ingredient.*;
+import com.beatsbucket.mashub.kitchen.ingredient.dummy.DummyAction;
+import com.beatsbucket.mashub.kitchen.ingredient.dummy.DummyIngred;
+import com.beatsbucket.mashub.kitchen.ingredient.filter.DummyFilterAction;
+import com.beatsbucket.mashub.kitchen.ingredient.twitter.TweetAction;
+import com.beatsbucket.mashub.kitchen.ingredient.twitter.Twitter;
 import org.junit.Test;
 
 import java.net.MalformedURLException;

@@ -19,12 +19,13 @@ package com.beatsbucket.mashub.kitchen.ingredient;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.beatsbucket.mashub.kitchen.ingredient.twitter.TweetAction;
 import junit.framework.Assert;
 import org.junit.Test;
 
 import com.beatsbucket.mashub.channel.OAuth1Channel;
 import com.beatsbucket.mashub.channel.OAuth1Credential;
-import com.beatsbucket.mashub.kitchen.ingredient.Twitter;
+import com.beatsbucket.mashub.kitchen.ingredient.twitter.Twitter;
 
 public class TwitterTest {
 	

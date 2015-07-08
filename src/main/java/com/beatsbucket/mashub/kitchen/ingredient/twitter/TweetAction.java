@@ -14,9 +14,10 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen.ingredient;
+package com.beatsbucket.mashub.kitchen.ingredient.twitter;
 
 import com.beatsbucket.mashub.channel.OAuth1Channel;
+import com.beatsbucket.mashub.kitchen.ingredient.*;
 import com.beatsbucket.mashub.util.ObjectUtil;
 import org.glassfish.jersey.client.oauth1.AccessToken;
 import org.glassfish.jersey.client.oauth1.ConsumerCredentials;
