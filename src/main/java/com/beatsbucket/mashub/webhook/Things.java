@@ -24,6 +24,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.beatsbucket.mashub.manager.ThingsManager;
+
 @Path("things")
 public class Things implements Communicable {
 	
@@ -104,9 +106,14 @@ public class Things implements Communicable {
 		return null;
 	}
 
+    @POST
+    @Path("updateStatus")
+    @Produces(MediaType.TEXT_PLAIN)
 	@Override
 	public String updateStatus(String json) {
-		// TODO Auto-generated method stub
+		ThingsManager t = new ThingsManager();
+		// TODO Its Dummy
+		t.updateStatus("dummyID", "on");
 		return null;
 	}
 
