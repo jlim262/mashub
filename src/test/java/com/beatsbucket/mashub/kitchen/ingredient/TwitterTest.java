@@ -19,6 +19,7 @@ package com.beatsbucket.mashub.kitchen.ingredient;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import com.beatsbucket.mashub.kitchen.ingredient.twitter.TimelineAction;
 import com.beatsbucket.mashub.kitchen.ingredient.twitter.TweetAction;
 import junit.framework.Assert;
 import org.junit.Test;
@@ -49,8 +50,12 @@ public class TwitterTest {
 		
 		Twitter twitter = new Twitter();
 		twitter.loadChannel(channel);
-		//String resp = twitter.getTimeline(3);
-		//System.out.println(resp);
+		TimelineAction timelineAction = new TimelineAction("getTimeLine");
+		twitter.addAction(timelineAction);
+		//todo this should be json format later
+		String targetJson = "3";
+		Result result = twitter.observe(timelineAction, targetJson);
+		Assert.assertNotNull(result);
 		
 	}
 
