@@ -38,8 +38,8 @@ public class Things implements Communicable {
     @GET
     @Path("{serial}")
     @Produces(MediaType.TEXT_PLAIN)
-    public String getIt(@PathParam("serial") String serial) {
-        return "Got "+serial+"!";
+    public String getThings(@PathParam("serial") String serial) {
+        return "sn: "+serial;
     }
     
     /**
@@ -107,14 +107,14 @@ public class Things implements Communicable {
 	}
 
     @POST
-    @Path("updateStatus")
+    @Path("{serial}/updateStatus")
     @Produces(MediaType.TEXT_PLAIN)
 	@Override
-	public String updateStatus(String json) {
+	public String updateStatus(@PathParam("serial") String serial, String json) {
 		ThingsManager t = new ThingsManager();
 		// TODO Its Dummy
-		t.updateStatus("dummyID", "on");
-		return null;
+		t.updateStatus(serial, json);
+		return "success";
 	}
 
 	@Override

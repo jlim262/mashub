@@ -18,6 +18,6 @@ package com.beatsbucket.mashub.webhook;
 
 public interface Communicable {
 	public String getPolicy(String json);
-    public String updateStatus(String json);
+    public String updateStatus(String serail, String json);
     public String getTask(String json);
 }

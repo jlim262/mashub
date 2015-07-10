@@ -18,7 +18,10 @@ package com.beatsbucket.mashub.webhook;
 
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 import junit.framework.TestCase;
 
@@ -26,8 +29,6 @@ import org.glassfish.grizzly.http.server.HttpServer;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.beatsbucket.mashub.webhook.Main;
 
 public class ThingsTest {
 	private HttpServer server;
@@ -48,7 +49,14 @@ public class ThingsTest {
  
     @Test
     public void testGetIt() {
-        String responseMsg = target.path("things").request().get(String.class);
-//        TestCase.assertEquals("Got it!", responseMsg);
+        String responseMsg = target.path("things/1").request().get(String.class);
+        TestCase.assertTrue(responseMsg.contains("sn"));
+    }
+    
+    @Test
+    public void testUpdateStatus() {
+    	Response response = target.path("things/1/updateStatus").request().post(Entity.entity("on", MediaType.TEXT_PLAIN));
+        String responseMsg = response.readEntity(String.class);
+        TestCase.assertTrue(responseMsg.contains("success"));
     }
 }

@@ -18,6 +18,9 @@
  */
 package com.beatsbucket.mashub.kitchen.ingredient.twitter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
 import com.beatsbucket.mashub.kitchen.ingredient.ReadableAction;
 import com.beatsbucket.mashub.kitchen.ingredient.Result;
@@ -63,6 +66,9 @@ public class ThingsAction implements ReadableAction {
 		tm.getStatus(targetJson);
         Result result = new Result();
         result.setData(tm.getStatus(targetJson));
+        List<String> a = new ArrayList();
+        
+        
 		return result;
 	}
 
