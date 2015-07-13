@@ -14,9 +14,19 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen;
+package com.beatsbucket.mashub.util;
 
-public interface TimerWheel {
-    void startTimer(int interval, int requestId, Scheduler scheduler);
-    void stopTimer(int requestId);
+import java.util.List;
+
+public class CircularList<T> extends ListDecorator<T> {
+    public CircularList(List<T> decoratedList) {
+        super(decoratedList);
+    }
+
+    @Override
+    public T get(int index) {
+        if (index < 0)
+            throw new NegativeArraySizeException();
+        return decoratedList.get(index % decoratedList.size());
+    }
 }
