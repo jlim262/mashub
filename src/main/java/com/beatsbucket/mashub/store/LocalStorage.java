@@ -14,12 +14,11 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.auth.store;
+package com.beatsbucket.mashub.store;
 
 /**
- * Simple Text base Key-Value Storage
- * 
+ * Local Storage
  */
-public abstract class SimpleStorage implements Storable<String, String> {
+public abstract class LocalStorage extends SimpleStorage {
 
 }

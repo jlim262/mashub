@@ -11,7 +11,10 @@ import javax.servlet.ServletResponse;
 
 /**
  * @TODO Add access token validation logic
- * @TODO The token can be stored in Memory-DB like REDIS
+ * @TODO The token can be stored in anywhere
+ * 			- in Memory
+ * 			- RDB
+ * 			- Memory-DB like REDIS
  * @TODO The error code should be defined.
  *
  */

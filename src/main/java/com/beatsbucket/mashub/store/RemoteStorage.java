@@ -14,11 +14,8 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.auth.store;
+package com.beatsbucket.mashub.store;
 
-import java.util.List;
+public abstract class RemoteStorage extends SimpleStorage {
 
-public interface Storable<Key, Value> {
-	List<Value> read(Key k);
-	void write(Key k, Value v);
 }
