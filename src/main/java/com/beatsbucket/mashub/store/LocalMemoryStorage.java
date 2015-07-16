@@ -46,7 +46,6 @@ public class LocalMemoryStorage extends LocalStorage {
 	 */
 	@Override
 	public void write(String k, String v) {
-		// TODO Auto-generated method stub
 		if(cache.get(k) == null) {
 			ArrayList<String> theList = new ArrayList<String>();
 			theList.add(v);
