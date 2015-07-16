@@ -9,6 +9,12 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
+/**
+ * @TODO Add access token validation logic
+ * @TODO The token can be stored in Memory-DB like REDIS
+ * @TODO The error code should be defined.
+ *
+ */
 public class AuthenticationFilter implements Filter {
 
 	@Override
