@@ -14,9 +14,11 @@
  * under the License.
  */
 
-package com.beatsbucket.mashub.kitchen.ingredient;
+package com.beatsbucket.mashub.kitchen;
 
-public interface ReadableAction extends Action {
-    // TODO the input parameter should cover various data types
-    Result observe(String targetJson);
+import com.beatsbucket.mashub.kitchen.ingredient.Action;
+import com.beatsbucket.mashub.kitchen.ingredient.Ingred;
+
+public interface Workflow {
+    Recipe<Ingred, Action> getNextRecipe(Recipe<Ingred, Action> current);
 }

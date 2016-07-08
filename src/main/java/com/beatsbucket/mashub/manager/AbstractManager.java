@@ -16,6 +16,7 @@
 
 package com.beatsbucket.mashub.manager;
 
+// TODO what is manager? what is the role of manager..? I forgot it;;;
 public class AbstractManager {
 
 }

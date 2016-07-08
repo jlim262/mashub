@@ -65,6 +65,7 @@ public class CookingChef extends Thread implements Chef<CookingQueue, Command> {
             try {
                 Result result = future.get();
                 if (result.isTriggered()) {
+                    //TODO if it's triggered, the result should be forwarded to the next recipe's input
                     System.out.println("CookingChef.perform " + "tweeted.");
                 }
             } catch (InterruptedException e) {

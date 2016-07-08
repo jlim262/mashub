@@ -18,6 +18,8 @@ package com.beatsbucket.mashub.kitchen.ingredient;
 
 public class Result {
     private boolean triggered = false;
+
+    /* TODO the result of output of action should cover various data type */
     private String data;
 
     public String getData() {

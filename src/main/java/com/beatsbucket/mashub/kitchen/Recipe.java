@@ -34,7 +34,10 @@ public interface Recipe<I, A> {
     void addFilters(List<FilterAction> filterActions);
     void setFilters(List<FilterAction> filterActions);
     List<FilterAction> getFilters();
-    String getId();
+    Long getId();
+    void setId(Long id);
+    String getName();
+    void setName(String name);
 
     State getState();
     void setState(State state);
