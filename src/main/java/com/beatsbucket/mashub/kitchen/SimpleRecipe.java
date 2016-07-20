@@ -88,8 +88,23 @@ public class SimpleRecipe implements Recipe<Ingred, Action> {
     }
 
     @Override
-    public String getId() {
+    public Long getId() {
         return id;
+    }
+
+    @Override
+    public void setId(Long id) {
+
+    }
+
+    @Override
+    public String getName() {
+        return null;
+    }
+
+    @Override
+    public void setName(String name) {
+
     }
 
     @Override
