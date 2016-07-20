@@ -15,18 +15,21 @@
  */
 package com.beatsbucket.mashub.persistence;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+
 public class UserEntity {
-    private Long id;
+    private Integer id;
     private String email;
     private String firstName;
     private String lastName;
     private UserType userType;
 
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -54,6 +57,7 @@ public class UserEntity {
         this.lastName = lastName;
     }
 
+    @Enumerated(EnumType.STRING)
     public UserType getUserType() {
         return userType;
     }

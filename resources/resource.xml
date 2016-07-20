@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="com.beatsbucket.mashub.persistence.UserEntity" table="USER">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="email"/>
+        <property name="firstName"/>
+        <property name="lastName"/>
+        <property name="userType"/>
+    </class>
+    <class name="com.beatsbucket.mashub.persistence.RecipeEntity" table="RECIPE">
+        <id name="id">
+            <generator class="native"/>
+        </id>
+        <property name="name"/>
+    </class>
+</hibernate-mapping>

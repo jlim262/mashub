@@ -6,6 +6,18 @@
 	<groupId>com.beatsbucket</groupId>
 	<artifactId>mashub</artifactId>
 	<version>0.1.0</version>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.6</source>
+					<target>1.6</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 	<repositories>
 		<repository>
 			<id>snapshot-repository.java.net</id>
@@ -95,9 +107,14 @@
 			<version>3.0-alpha-1</version>
 		</dependency>
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.39</version>
+		</dependency>
+		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.2.1.Final</version>
+			<version>5.1.0.Final</version>
 		</dependency>
 	</dependencies>
 
